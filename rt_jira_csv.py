@@ -10,7 +10,7 @@ rt_task = 'RT-12345' #master RT
 sch_dt = 'MM/DD/YYYY' #Scheduled Date
 owner = 'afisher@spscommerce.com' #Email
 
-infile = open('scope.csv', 'r') #Name your file 'input.csv'
+infile = open('scope.csv', 'r') #Name your file 'scope.csv'
 csv_reader = csv.DictReader(infile, dialect='excel')
 
 outfile = open('JIRA_Import_.csv', 'w', newline="")
