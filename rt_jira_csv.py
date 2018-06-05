@@ -15,7 +15,7 @@ owner = input('Enter your email address: ')
 infile = open('scope.csv', 'r') #Name your file 'scope.csv'
 csv_reader = csv.DictReader(infile, dialect='excel')
 
-outfile = open('JIRA_Import.csv', 'w', newline="")
+outfile = open('JIRA_Import.csv', 'w', newline='')
 out_clmns = ['Type','Issue ID','Parent ID','Summary','Description','Scheduled','Account Name','RM Coordinator','Project Owner','Summary of Changes','TPID']
 csv_writer = csv.DictWriter(outfile, fieldnames=out_clmns, dialect='excel')
 csv_writer.writeheader()
@@ -31,7 +31,7 @@ for row in csv_reader:
                          'Account Name':(co_name),
                          'RM Coordinator':(owner),
                          'Project Owner':(owner),
-                         'TPID':(tpid)})      
+                         'TPID':(tpid) or 'SALESFORCE'})      
 
 infile.close()
 outfile.close()
