@@ -4,18 +4,20 @@
 
 import csv
 
-hub = 'Walmart USA' #hub name
-doc = '850' #doctype
-rt_task = 'RT-12345' #master RT
-sch_dt = 'MM/DD/YYYY' #Scheduled Date
-owner = 'afisher@spscommerce.com' #Email
+print('Welcome to the JIRA RT .csv script! \n\nPlease ensure your input is named "scope.csv" and the file is located in \nthe same directory as this script\n')
+
+hub = input('Enter hub company name: ')
+doc = input('Enter the EDI doc type: ')
+rt_task = input('Eneter the master RT ticket number: ')
+sch_dt = input('Enter the scheduled install date (MM/DD/YYYY): ')
+owner = input('Enter your email address: ')
 
 infile = open('scope.csv', 'r') #Name your file 'scope.csv'
 csv_reader = csv.DictReader(infile, dialect='excel')
 
-outfile = open('JIRA_Import_.csv', 'w', newline="")
-out_cols = ['Type','Issue ID','Parent ID','Summary','Description','Scheduled','Account Name','RM Coordinator','Project Owner','Summary of Changes','TPID']
-csv_writer = csv.DictWriter(outfile, fieldnames=out_cols, dialect='excel')
+outfile = open('JIRA_Import.csv', 'w', newline="")
+out_clmns = ['Type','Issue ID','Parent ID','Summary','Description','Scheduled','Account Name','RM Coordinator','Project Owner','Summary of Changes','TPID']
+csv_writer = csv.DictWriter(outfile, fieldnames=out_clmns, dialect='excel')
 csv_writer.writeheader()
 
 for row in csv_reader:
@@ -33,3 +35,4 @@ for row in csv_reader:
 
 infile.close()
 outfile.close()
+print('\nDONE - Script created JIRA .csv successfully')
